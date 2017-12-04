@@ -12,6 +12,32 @@
  <link href='http://fonts.googleapis.com/css?family=Oswald' rel='stylesheet' type='text/css'>
  <link href='http://fonts.googleapis.com/css?family=Goudy+Bookletter+1911' rel='stylesheet' type='text/css'>
  <script>
+        
+<!----- JQUERY FOR SLIDING NAVIGATION --->   
+$(document).ready(function() {
+  $('a[href*=#]').each(function() {
+    if (location.pathname.replace(/^\//,'') == this.pathname.replace(/^\//,'')
+    && location.hostname == this.hostname
+    && this.hash.replace(/#/,'') ) {
+      var $targetId = $(this.hash), $targetAnchor = $('[name=' + this.hash.slice(1) +']');
+      var $target = $targetId.length ? $targetId : $targetAnchor.length ? $targetAnchor : false;
+       if ($target) {
+         var targetOffset = $target.offset().top;
+
+<!----- JQUERY CLICK FUNCTION REMOVE AND ADD CLASS "ACTIVE" + SCROLL TO THE #DIV--->   
+         $(this).click(function() {
+            $("#nav li a").removeClass("active");
+            $(this).addClass('active');
+           $('html, body').animate({scrollTop: targetOffset}, 1000);
+           return false;
+         });
+      }
+    }
+  });
+
+});
+
+
  </script>
 </head>
 
@@ -36,7 +62,7 @@
 
     <div id="slide1">
         <div class="content">
-            <div id="intro"> <h1>INTRO</h1> </div>    
+            <div id="portfolio"> <h1>Portfolio</h1> </div>    
         </div> 
     </div> 
 
@@ -44,7 +70,7 @@
         <div class="content" >
             <div class="educations_container">
                 <h2 class="educations">Educations</h2>
-                <img src="img/?.png" align="left"/> <h4 class="school_name">school</h4>
+                <img src="img/school_logo1.png" align="left"/> <h4 class="school_name">school</h4>
             </div> 
         </div> 
     </div>
@@ -53,7 +79,7 @@
         <div class="content" >
             <div class="experience_container">
                 <h2 class="experience">Experience</h2>
-                <img src="img/?.png" align="left"/> <h4 class="company_name">company</h4>
+                <img src="img/company_logo1.png" align="left"/> <h4 class="company_name">company</h4>
             </div> 
         </div> 
     </div>
